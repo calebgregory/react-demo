@@ -1,0 +1,19 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "caleb gregory <calebgregory@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^5.8.25",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0"
+  }
+}
