@@ -1,8 +1,59 @@
+var ProductCategoryRow = React.createClass({
+  render: function() {
+    return (<tr><th colSpan="2">{this.props.category}</th></tr>);
+  }
+});
+
+var ProductRow = React.createClass({
+  render: function() {
+    var name = this.props.product.stocked ?
+        this.props.product.name :
+        <span style={{color: 'red'}}>
+          {this.props.product.name}
+        </span>;
+    return (
+      <tr>
+        <td>{name}</td>
+        <td>{this.props.product.price}</td>
+      </tr>
+    );
+  }
+});
+
+var ProductTable = React.createClass({
+  render: function() {
+    var lastCategory = null;
+    var rows = this.props.products.map(product => {
+      var newRow = [];
+      if (product.category !== lastCategory) {
+        newRow = newRow.concat(
+          <ProductCategoryRow category={product.category} key={product.category} />
+        );
+      }
+      lastCategory = product.category;
+      return newRow.concat(
+        <ProductRow product={product} key={product.name} />
+      );
+    });
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
+});
+
 var FilterableProductTable = React.createClass({
   render: function() {
     return (
       <div>
-        "Herrlo"
+        <ProductTable products={this.props.products} />
       </div>
     );
   }
