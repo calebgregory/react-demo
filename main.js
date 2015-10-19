@@ -49,15 +49,32 @@ var ProductTable = React.createClass({
   }
 });
 
+var SearchBar = React.createClass({
+  render: function() {
+    return (
+      <form>
+        <input type="text" placeholder="Search" />
+        <p>
+          <input type="checkbox" />
+          {' '}
+          Only show products in stock
+        </p>
+      </form>
+    );
+  }
+});
+
 var FilterableProductTable = React.createClass({
   render: function() {
     return (
       <div>
+        <SearchBar />
         <ProductTable products={this.props.products} />
       </div>
     );
   }
 });
+
 
 var PRODUCTS = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
